@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CC1874FB-3735-4723-9D70-490F7E4F278E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TreeGecko.Library.Archery</RootNamespace>
+    <AssemblyName>tgArcheryLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\TreeGecko\ArcheryScorer\bin\MongoDB\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\TreeGecko\ArcheryScorer\bin\MongoDB\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\TreeGecko\ArcheryScorer\bin\Newtonsoft\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\CannedEmailNames.cs" />
+    <Compile Include="DAOs\ArrowDAO.cs" />
+    <Compile Include="DAOs\CompetitionDAO.cs" />
+    <Compile Include="DAOs\CompetitionFormatDAO.cs" />
+    <Compile Include="DAOs\CompetitionShooterDAO.cs" />
+    <Compile Include="DAOs\EndDAO.cs" />
+    <Compile Include="DAOs\OrganizationDAO.cs" />
+    <Compile Include="DAOs\ShooterDAO.cs" />
+    <Compile Include="Managers\ArcheryScorerManager.cs" />
+    <Compile Include="Managers\ArcheryScorerStructureManager.cs" />
+    <Compile Include="Objects\Arrow.cs" />
+    <Compile Include="Objects\Competition.cs" />
+    <Compile Include="Objects\CompetitionFormat.cs" />
+    <Compile Include="Objects\CompetitionShooter.cs" />
+    <Compile Include="Objects\End.cs" />
+    <Compile Include="Objects\Organization.cs" />
+    <Compile Include="Objects\Round.cs" />
+    <Compile Include="DAOs\RoundDAO.cs" />
+    <Compile Include="Objects\Shooter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\src\tgAWS\tgAWS.csproj">
+      <Project>{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}</Project>
+      <Name>tgAWS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\src\tgCommonLibrary\tgCommonLibrary.csproj">
+      <Project>{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}</Project>
+      <Name>tgCommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\src\tgMongo\tgMongo.csproj">
+      <Project>{30C94612-2107-49FD-BEA7-9789AF896B01}</Project>
+      <Name>tgMongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\src\tgNet\tgNet.csproj">
+      <Project>{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}</Project>
+      <Name>tgNet</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

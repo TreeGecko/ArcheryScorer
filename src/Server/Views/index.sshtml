@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html ng-app="asMobile">
+	<head>
+		<title>ArcheryScorer Mobile</title>
+		
+		@Partial['standardincludes.sshtml']
+		@Partial['appincludes.sshtml']
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+	</head>
+	<body class="landing">
+		<div class="container">
+			@Partial['menu.sshtml']
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div ng-view></div>
+				</div>
+			</div>
+		</div>		
+	</body>
+</html>

@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server.csproj", "{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tgArcheryLibrary", "..\tgArcheryLibrary\tgArcheryLibrary.csproj", "{CC1874FB-3735-4723-9D70-490F7E4F278E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tgCommonLibrary", "..\..\..\Libraries\src\tgCommonLibrary\tgCommonLibrary.csproj", "{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tgMongo", "..\..\..\Libraries\src\tgMongo\tgMongo.csproj", "{30C94612-2107-49FD-BEA7-9789AF896B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tgNet", "..\..\..\Libraries\src\tgNet\tgNet.csproj", "{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tgAWS", "..\..\..\Libraries\src\tgAWS\tgAWS.csproj", "{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Debug|x64.ActiveCfg = Debug|x64
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Debug|x64.Build.0 = Debug|x64
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Debug|x86.ActiveCfg = Debug|x86
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Debug|x86.Build.0 = Debug|x86
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Release|x64.ActiveCfg = Release|x64
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Release|x64.Build.0 = Release|x64
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Release|x86.ActiveCfg = Release|x86
+		{CC78E58B-8FE0-4C77-A8B4-23EE27EECDF0}.Release|x86.Build.0 = Release|x86
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Debug|x64.ActiveCfg = Debug|x64
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Debug|x64.Build.0 = Debug|x64
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Debug|x86.ActiveCfg = Debug|x86
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Debug|x86.Build.0 = Debug|x86
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Release|x64.ActiveCfg = Release|x64
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Release|x64.Build.0 = Release|x64
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Release|x86.ActiveCfg = Release|x86
+		{CC1874FB-3735-4723-9D70-490F7E4F278E}.Release|x86.Build.0 = Release|x86
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Debug|x64.ActiveCfg = Debug|x64
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Debug|x64.Build.0 = Debug|x64
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Debug|x86.ActiveCfg = Debug|x86
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Debug|x86.Build.0 = Debug|x86
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Release|x64.ActiveCfg = Release|x64
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Release|x64.Build.0 = Release|x64
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Release|x86.ActiveCfg = Release|x86
+		{64FE4175-4C97-4835-AD97-3C4F19E7B4DA}.Release|x86.Build.0 = Release|x86
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Debug|x64.ActiveCfg = Debug|x64
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Debug|x64.Build.0 = Debug|x64
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Debug|x86.ActiveCfg = Debug|x86
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Debug|x86.Build.0 = Debug|x86
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Release|x64.ActiveCfg = Release|x64
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Release|x64.Build.0 = Release|x64
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Release|x86.ActiveCfg = Release|x86
+		{30C94612-2107-49FD-BEA7-9789AF896B01}.Release|x86.Build.0 = Release|x86
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Debug|x64.ActiveCfg = Debug|x64
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Debug|x64.Build.0 = Debug|x64
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Debug|x86.ActiveCfg = Debug|x86
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Debug|x86.Build.0 = Debug|x86
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Release|x64.ActiveCfg = Release|x64
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Release|x64.Build.0 = Release|x64
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Release|x86.ActiveCfg = Release|x86
+		{E6DF32BB-18C9-4BD8-882A-A0CB67383A40}.Release|x86.Build.0 = Release|x86
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Debug|x64.ActiveCfg = Debug|x64
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Debug|x64.Build.0 = Debug|x64
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Debug|x86.ActiveCfg = Debug|x86
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Debug|x86.Build.0 = Debug|x86
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Release|x64.ActiveCfg = Release|x64
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Release|x64.Build.0 = Release|x64
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Release|x86.ActiveCfg = Release|x86
+		{02F95722-ADB3-4DE3-8FBA-DF62D39F836B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

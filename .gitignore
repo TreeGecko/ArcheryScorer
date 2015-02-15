@@ -1,0 +1,10 @@
+bin/AWS/AWS.SessionProvider.xml
+src/tgArcheryLibrary/bin/
+src/Server/obj/
+src/Server/bin/
+*.config
+src/tgArcheryLibrary/obj/
+*.suo
+bin/AWS/AWS.TraceListener.xml
+bin/AWS/AWSSDK.xml
+*.user
