@@ -23,10 +23,12 @@
                     });
                 };
 
-            self.updateShooter = function() {
-                shooterService.updateShooter(self.shooter)
+            self.saveShooter = function() {
+                self.shooter.Guid = self.Guid;
+
+                shooterService.saveShooter(self.shooter)
                     .then(function(result) {
-                        if (result.data.Result == "Success") {
+                        if (result.Result == "Success") {
                             $location.path("/shooters");
                         }
                     });

@@ -1,4 +1,4 @@
-﻿<div class="users-container" ng-controller="ShooterListController as shooterListCtrl">
+﻿<div class="users-container" ng-controller="ShooterListCtrl as shooterListCtrl">
     <div class="row padbottom">
         <div class="col-md-10 col-xs-9">
             <h3>Shooters</h3>
@@ -20,11 +20,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="shooter in data.Shooters">
+                        <tr ng-repeat="shooter in shooterListCtrl.data.Shooters">
                             <td><a class="btn btn-default btn-sm" href="#/shooter/{{ shooter.Guid }}">Edit</a></td>
-                            <td>{{ user.FirstName }}</td>
-                            <td>{{ user.LastName }}</td>
-                            <td>{{ user.BirthDate }}</td>
+                            <td>{{ shooter.FirstName }}</td>
+                            <td>{{ shooter.LastName }}</td>
+                            <td>{{ shooter.BirthDate }}</td>
                         </tr>
                     </tbody>
                 </table>

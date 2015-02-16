@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using Nancy;
+using Nancy.Responses;
 using TreeGecko.Library.Archery.Constants;
 using TreeGecko.Library.Archery.Managers;
 using TreeGecko.Library.Archery.Objects;
@@ -41,7 +42,7 @@ namespace TreeGecko.Archery.Server.Modules
             {
                 if (Register(_parameters))
                 {
-                    return View["/#/login"];
+                    return Response.AsRedirect("/#/login", RedirectResponse.RedirectType.Permanent);
                 }
                 
                 return View["register.sshtml"];
@@ -77,7 +78,7 @@ namespace TreeGecko.Archery.Server.Modules
                 manager.Persist(validation);
 
                 Account account = new Account {PrimaryUserGuid = user.Guid};
-
+                manager.Persist(account);
 
                 NameValueCollection nvc = new NameValueCollection
                 {

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using Nancy;
 using Newtonsoft.Json;
@@ -47,11 +47,96 @@ namespace TreeGecko.Archery.Server.Modules
 
         private string HandleShooterPost(DynamicDictionary _parameters)
         {
-            return null;
+            BaseResult result = new BaseResult {Result = "Failure"};
+            TGUser user;
+
+            User jUser = AuthHelper.ValidateToken(m_Manager, Request, out user);
+            if (jUser != null)
+            {
+                Account account = m_Manager.GetAccountByUser(user.Guid);
+
+                if (account != null)
+                {
+                    string json = ReadBody();
+                    if (!string.IsNullOrEmpty(json))
+                    {
+                        var jShooter = JsonConvert.DeserializeObject<JsonObjects.Shooter>(json);
+
+                        if (jShooter != null)
+                        {
+                            Library.Archery.Objects.Shooter shooter = null;
+
+                            if (!string.IsNullOrEmpty(jShooter.Guid))
+                            {
+                                Guid shooterGuid;
+                                if (Guid.TryParse(jShooter.Guid, out shooterGuid))
+                                {
+                                    shooter = m_Manager.GetShooter(shooterGuid);
+
+                                    if (!account.Guid.Equals(shooter.ParentGuid))
+                                    {
+                                        //For some reason the shooter doesn't belong to the account.
+                                        shooter = null;
+                                    }
+                                }
+                            }
+
+                            if (shooter == null)
+                            {
+                                shooter = new Library.Archery.Objects.Shooter
+                                {
+                                    Active = true,
+                                    ParentGuid = account.Guid
+                                };
+                            }
+
+                            shooter.FirstName = jShooter.FirstName;
+                            shooter.LastName = jShooter.LastName;
+
+                            DateTime bDate;
+                            if (DateTime.TryParse(jShooter.BirthDate, out bDate))
+                            {
+                                shooter.BirthDate = bDate;
+                            }
+
+                            m_Manager.Persist(shooter);
+                            result.Result = "Success";
+                        }
+                    }
+                }
+            }
+
+            return JsonConvert.SerializeObject(result);
         }
 
         private string HandleShooterGet(DynamicDictionary _parameters)
         {
+            TGUser user;
+
+            User jUser = AuthHelper.ValidateToken(m_Manager, Request, out user);
+            if (jUser != null)
+            {
+                Account account = m_Manager.GetAccountByUser(user.Guid);
+
+                if (account != null)
+                {
+                    Guid shooterGuid;
+                    if (Guid.TryParse(_parameters["guid"], out shooterGuid))
+                    {
+                        var shooter = m_Manager.GetShooter(shooterGuid);
+
+                        if (shooter != null
+                            && account.Guid.Equals(shooter.ParentGuid))
+                        {
+                            var jShooter = new JsonObjects.Shooter(shooter);
+                            return JsonConvert.SerializeObject(jShooter);
+                        }
+                    }
+                }
+
+                return null;
+            }
+
             return null;
         }
 

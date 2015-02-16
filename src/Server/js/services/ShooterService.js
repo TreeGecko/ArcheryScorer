@@ -24,8 +24,7 @@
                         headers: {
                             'Username': userService.Username,
                             'AuthToken': userService.AuthToken
-                        },
-                        data: user
+                        }
                     };
 
                     return $http(req)
@@ -33,7 +32,7 @@
                             return result.data;
                         });
                 },
-                updateShooter : function(shooter) {
+                saveShooter : function(shooter) {
                     var req = {
                         method: 'POST',
                         url: '/rest/shooter',
