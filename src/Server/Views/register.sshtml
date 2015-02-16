@@ -8,6 +8,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	</head>
 	<body class="landing">
+		<script type="text/javascript">
+			function submitform()
+			{
+				var pw1 = $('#txtPassword').val();
+				var pw2 = $('#txtPassword2').val();
+
+				if (pw1 == pw2) {
+					$('#registerform').submit();
+				} else {
+					$('#lblStatus').text('Passwords do not match');
+				}
+			}
+		</script>
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
@@ -52,7 +65,7 @@
 							<label for="txtPassword2">Renenter Password</label>
 							<input type="password" id="txtPassword2" name="txtPassword2" required="" class="form-control"/>
 						</div>
-						<input id="btnLogin" class="btn btn-primary" value="Register" type="submit" />
+						<input id="btnLogin" class="btn btn-primary" value="Register" onclick="submitform()"/>
 						<div class="row">	
 							<div class="col-md-9">
 								<label id="lblStatus" />

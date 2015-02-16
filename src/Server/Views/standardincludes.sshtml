@@ -13,3 +13,4 @@
 <!-- Self Hosted 3rd Party  -->
 <script src="/js/3rdParty/loki.min.js"></script>
 <script src="/js/3rdParty/lockr.min.js"></script>
+<script src="/js/3rdParty/ui-bootstrap-tpls-0.12.0.min.js"></script>

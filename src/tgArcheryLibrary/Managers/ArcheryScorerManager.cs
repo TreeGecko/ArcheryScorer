@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using TreeGecko.Library.Archery.DAOs;
 using TreeGecko.Library.Archery.Objects;
 using TreeGecko.Library.AWS.Helpers;
@@ -55,7 +56,7 @@ namespace TreeGecko.Library.Archery.Managers
             return dao.Get(_guid);
         }
 
-        public List<Competition> GetCompetitions()
+        public List<Competition> GetCompetitions(Guid _accountGuid)
         {
             CompetitionDAO dao = new CompetitionDAO(MongoDB);
             return dao.GetAll();
@@ -187,13 +188,37 @@ namespace TreeGecko.Library.Archery.Managers
             return dao.Get(_guid);
         }
 
-        public List<Shooter> GetShooters()
+        public List<Shooter> GetShooters(Guid _accountGuid)
         {
             ShooterDAO dao = new ShooterDAO(MongoDB);
-            return dao.GetAll();
+            return dao.GetShooters(_accountGuid);
         }
 
         #endregion
+
+        #region Account
+
+        public void Persist(Account _account)
+        {
+            AccountDAO dao = new AccountDAO(MongoDB);
+            dao.Persist(_account);
+        }
+
+        public Account GetAccount(Guid _accountGuid)
+        {
+            AccountDAO dao = new AccountDAO(MongoDB);
+            return dao.Get(_accountGuid);
+        }
+
+        public Account GetAccountByUser(Guid _userGuid)
+        {
+            AccountDAO dao = new AccountDAO(MongoDB);
+            return dao.GetAccountByUser(_userGuid);
+        }
+
+
+        #endregion
+
 
         public bool SendCannedEmail(TGUser _tgUser,
                                     string _cannedEmailName,

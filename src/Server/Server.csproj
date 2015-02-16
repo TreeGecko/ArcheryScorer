@@ -58,11 +58,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\TreeGecko\ArcheryScorer\bin\MongoDB\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\MongoDB\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\TreeGecko\ArcheryScorer\bin\MongoDB\MongoDB.Driver.dll</HintPath>
+    <Reference Include="MongoDB.Driver, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\MongoDB\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Nancy">
       <HintPath>packages\Nancy.1.0.0\lib\net40\Nancy.dll</HintPath>
@@ -70,8 +72,9 @@
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>packages\Nancy.Hosting.Aspnet.1.0.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\TreeGecko\ArcheryScorer\bin\Newtonsoft\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Newtonsoft\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -93,25 +96,33 @@
     <Content Include="ClientViews\home.html" />
     <Content Include="ClientViews\login.html" />
     <Content Include="ClientViews\logout.html" />
+    <Content Include="ClientViews\shooter_add.html" />
+    <Content Include="ClientViews\shooter_list.html" />
     <Content Include="css\app.css" />
     <Content Include="js\3rdParty\lockr.min.js" />
     <Content Include="js\3rdParty\loki.min.js" />
+    <Content Include="js\3rdParty\ui-bootstrap-tpls-0.12.0.min.js" />
     <Content Include="js\app.js" />
     <Content Include="js\controllers\LoginController.js" />
     <Content Include="js\controllers\LogoutController.js" />
     <Content Include="js\controllers\MainController.js" />
+    <Content Include="js\controllers\ShooterController.js" />
+    <Content Include="js\controllers\ShooterListController.js" />
     <Content Include="js\services\LocalDBService.js" />
+    <Content Include="js\services\ShooterService.js" />
     <Content Include="js\services\UserService.js" />
     <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper\CustomBootstrapper.cs" />
+    <Compile Include="Helpers\AuthHelper.cs" />
+    <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="JsonObjects\BaseObject.cs" />
+    <Compile Include="JsonObjects\BaseResult.cs" />
+    <Compile Include="JsonObjects\LoginRequest.cs" />
+    <Compile Include="JsonObjects\LoginResult.cs" />
+    <Compile Include="JsonObjects\Shooter.cs" />
+    <Compile Include="JsonObjects\User.cs" />
     <Compile Include="Modules\AppModule.cs" />
     <Compile Include="Modules\RestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,9 +149,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="images\" />
-    <Folder Include="JsonObjects\" />
     <Folder Include="Objects\" />
   </ItemGroup>
   <ItemGroup>
@@ -157,12 +166,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>49760</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

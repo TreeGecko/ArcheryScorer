@@ -1,8 +1,8 @@
 ﻿using System.Collections.Specialized;
-using System.Linq;
 using Nancy;
 using TreeGecko.Library.Archery.Constants;
 using TreeGecko.Library.Archery.Managers;
+using TreeGecko.Library.Archery.Objects;
 using TreeGecko.Library.Common.Helpers;
 using TreeGecko.Library.Net.Objects;
 
@@ -39,17 +39,20 @@ namespace TreeGecko.Archery.Server.Modules
 
             Post["/register"] = _parameters =>
             {
-                Response response = (Response)Register(_parameters);
-                response.ContentType = "application/json";
-                return response;
+                if (Register(_parameters))
+                {
+                    return View["/#/login"];
+                }
+                
+                return View["register.sshtml"];
             };
         }
 
-        private string Register(DynamicDictionary _parameters)
+        private bool Register(DynamicDictionary _parameters)
         {
-            string username = Request.Headers["Username"].First();
-            string email = Request.Headers["Email"].First();
-            string password = Request.Headers["Password"].First();
+            string username = Request.Form["txtUsername"];
+            string email = Request.Form["txtEmailAddress"];
+            string password = Request.Form["txtPassword"];
 
             ArcheryScorerManager manager = new ArcheryScorerManager();
 
@@ -73,6 +76,9 @@ namespace TreeGecko.Archery.Server.Modules
                 TGUserEmailValidation validation = new TGUserEmailValidation(user);
                 manager.Persist(validation);
 
+                Account account = new Account {PrimaryUserGuid = user.Guid};
+
+
                 NameValueCollection nvc = new NameValueCollection
                 {
                     {"SystemUrl", Config.GetSettingValue("SystemUrl")},
@@ -80,10 +86,10 @@ namespace TreeGecko.Archery.Server.Modules
                 };
                 manager.SendCannedEmail(user, CannedEmailNames.ValidateEmailAddress, nvc);
 
-                return "{ \"Result\":\"Success\" }";
+                return true;
             }
 
-            return "{ \"Result\":\"UsernameNotAvailable\" }";
+            return false;
         }
     }
 }

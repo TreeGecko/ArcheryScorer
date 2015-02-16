@@ -1,0 +1,44 @@
+﻿<div class="editshooter-container" ng-controller="ShooterCtrl as shooterCtrl">
+    <div class="alert alert-danger" ng-bind="shooterCtrl.errorMessage" ng-show="shooterCtrl.errorMessage">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="card shooter-card">
+                <div class="shooter-form">
+                    <form name="userForm" ng-submit="shooterCtrl.updateUser()" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input type="text"
+                                   ng-model="shooterCtrl.shooter.FirstName"
+                                   class="form-control"
+                                   id="firstname"
+                                   placeholder="Enter First Name"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text"
+                                   ng-model="shooterCtrl.shooter.LastName"
+                                   class="form-control"
+                                   id="lastname"
+                                   placeholder="Enter Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate">Birth Date</label>
+                            <datepicker ng-model="shooterCtrl.shooter.BirthDate" 
+                                        id="birthdate"
+                                        min-date="1900-01-01" 
+                                        show-weeks="false" 
+                                        class="well well-sm"></datepicker>
+                        </div>
+                        <input type="submit"
+                               class="btn btn-success btn-sm"
+                               value="Save"
+                               ng-disabled="loginForm.$invalid">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

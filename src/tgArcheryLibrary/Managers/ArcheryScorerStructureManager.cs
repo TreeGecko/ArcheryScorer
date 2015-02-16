@@ -17,6 +17,9 @@ namespace TreeGecko.Library.Archery.Managers
         {
             BuildDB(true);
 
+            AccountDAO accountDAO = new AccountDAO(MongoDB);
+            accountDAO.BuildTable();
+
             ArrowDAO arrowDAO = new ArrowDAO(MongoDB);
             arrowDAO.BuildTable();
 

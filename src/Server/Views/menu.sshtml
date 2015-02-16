@@ -14,7 +14,16 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-
+        <li class="dropdown" ng-show="mainCtrl.userService.isLoggedIn">
+	        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Score <span class="caret"></span></a>
+	        <ul class="dropdown-menu" role="menu">
+		        <li><a href="#/competitions">Competitions</a></li>
+		        <li><a href="#/competition">Add Competition</a></li>
+            <li class="divider"></li>
+            <li><a href="#/shooters">Shooters</a></li>
+            <li><a href="#/shooter">Add Shooter</a></li>
+          </ul>
+        </li>
       </ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li ng-hide="mainCtrl.userService.isLoggedIn"><a href="#/login">Login</a></li>
