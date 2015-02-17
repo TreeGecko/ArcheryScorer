@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Nancy;
 using Newtonsoft.Json;
@@ -43,6 +44,47 @@ namespace TreeGecko.Archery.Server.Modules
                 response.ContentType = "application/json";
                 return response;
             };
+
+            Get["/rest/guids/{quantity}"] = _parameters =>
+            {
+                Response response = HandleGuidGet(_parameters);
+                response.ContentType = "application/json";
+                return response;
+            };
+        }
+
+        private string HandleGuidGet(DynamicDictionary _parameters)
+        {
+            TGUser user;
+
+            List<string> guidList = new List<string>();
+
+            User jUser = AuthHelper.ValidateToken(m_Manager, Request, out user);
+            if (jUser != null)
+            {
+                string temp = _parameters["quantity"];
+                int quantity;
+
+                if (!int.TryParse(temp, out quantity))
+                {
+                    quantity = 100;
+                }
+
+                if (quantity > 1000)
+                {
+                    quantity = 1000;
+                }
+
+                for (int i = 0; i < quantity; i++)
+                {
+                    Guid guid = Guid.NewGuid();
+                    guidList.Add(guid.ToString());
+                }
+
+                return JsonConvert.SerializeObject(guidList);
+            }
+
+            return null;
         }
 
         private string HandleShooterPost(DynamicDictionary _parameters)

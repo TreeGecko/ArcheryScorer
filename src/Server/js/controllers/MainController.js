@@ -1,8 +1,11 @@
 ﻿angular.module('asMobile')
     .controller('MainCtrl', [
-        'UserService',
-        function (userService) {
+        'UserService', 'GuidService',
+        function (userService, guidService) {
             var self = this;
             self.userService = userService;
+
+            guidService.verifyGuidSupply();
+
         }
     ]);

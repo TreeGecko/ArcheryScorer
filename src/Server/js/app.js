@@ -1,4 +1,4 @@
-﻿var module = angular.module('asMobile', ['ngRoute', 'ui.bootstrap']);
+﻿var module = angular.module('asMobile', ['ngRoute', 'ui.bootstrap', 'angularUUID2']);
 
 module.config(function ($routeProvider) {
         $routeProvider.when('/', {

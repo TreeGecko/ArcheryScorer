@@ -29,5 +29,14 @@ namespace TreeGecko.Library.Archery.Objects
             LastName = _tgs.GetString("LastName");
             BirthDate = _tgs.GetDateTime("BirthDate");
         }
+
+        public string FullName
+        {
+            get
+            {
+                string temp = string.Format("{0} {1}", FirstName, LastModifiedBy);
+                return temp.Trim();
+            }
+        }
     }
 }

@@ -1,0 +1,104 @@
+﻿<div class="editcomp-container" ng-controller="CompetitionCtrl as compCtrl">
+    <div class="alert alert-danger" ng-bind="compCtrl.errorMessage" ng-show="compCtrl.errorMessage">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="card comp-card">
+                <div class="comp-form">
+                    <form name="compForm" ng-submit="compCtrl.saveCompetition()" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text"
+                                   ng-model="compCtrl.competition.Name"
+                                   class="form-control"
+                                   id="name"
+                                   placeholder="Enter Name"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <select id="organization" class="form-control" ng-model="format" ng-options="org.Name for org in compCtrl.organizations"><option></option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate">Date</label>
+                            <datepicker ng-model="compCtrl.competition.Date" 
+                                        id="date"
+                                        min-date="1900-01-01" 
+                                        show-weeks="false" 
+                                        class="well well-sm"></datepicker>
+                        </div>
+                        <div class="form-group">
+                            <label for="rounds">Rounds in Competition</label>
+                            <input type="number"
+                                   ng-model="compCtrl.competition.Rounds"
+                                   class="form-control"
+                                   id="rounds"
+                                   placeholder="Enter number of rounds"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="ends">Ends per Round</label>
+                            <input type="number"
+                                   ng-model="compCtrl.competition.Ends"
+                                   class="form-control"
+                                   id="ends"
+                                   placeholder="Enter number of ends per round"
+                                   required="">
+                        </div>      
+                        <div class="form-group">
+                            <label for="arrows">Arrows per End</label>
+                            <input type="number"
+                                   ng-model="compCtrl.competition.Arrows"
+                                   class="form-control"
+                                   id="arrows"
+                                   placeholder="Enter number of arrows per end"
+                                   required="">
+                        </div> 
+                        <div class="form-group">
+                            <label for="arrows">Maximum Points Per Arrow</label>
+                            <input type="number"
+                                   ng-model="compCtrl.competition.MaxPointsPerArrow"
+                                   class="form-control"
+                                   id="Number1"
+                                   placeholder="Enter maximum points per arrow"
+                                   required="">
+                        </div>                                                                      
+                        <div class="form-group">
+                            <label for="trackx">Count Number of X's</label>
+                            <input type="checkbox"
+                                   ng-model="compCtrl.competition.TrackX"
+                                   id="trackx"
+                                   placeholder="Enter maximum points per arrow">
+                        </div>        
+                        <div class="form-group">
+                            <label>Select Shooter to Add</label>
+                            <select id="Select1" ng-model="compCtrl.addedShooter" ng-change="compCtrl.addShooter()" ng-options="shooter.Guid as shooter.FirstName for shooter in compCtrl.shooters"><option></option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="shooters">Selected Shooters</label>
+                            <table class="table table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 100px; ">Action</th>
+                                        <th style="width: 100px; ">Full Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="shooter in compCtrl.competition.CompetitionShooters">
+                                        <td><a class="btn btn-default btn-sm" onclick="compCtrl.remove(shooter.ShooterGuid)">Remove</a></td>
+                                        <td>{{ shooter.ShooterFullName }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <input type="submit"
+                               class="btn btn-success btn-sm"
+                               value="Save"
+                               ng-disabled="compForm.$invalid">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -93,21 +93,28 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientViews\competition_list.html" />
+    <Content Include="ClientViews\competition_add.html" />
     <Content Include="ClientViews\home.html" />
     <Content Include="ClientViews\login.html" />
     <Content Include="ClientViews\logout.html" />
     <Content Include="ClientViews\shooter_add.html" />
     <Content Include="ClientViews\shooter_list.html" />
     <Content Include="css\app.css" />
+    <Content Include="js\3rdParty\angular-uuid2.min.js" />
     <Content Include="js\3rdParty\lockr.min.js" />
     <Content Include="js\3rdParty\loki.min.js" />
     <Content Include="js\3rdParty\ui-bootstrap-tpls-0.12.0.min.js" />
     <Content Include="js\app.js" />
+    <Content Include="js\controllers\CompetitionController.js" />
+    <Content Include="js\controllers\CompetitionListController.js" />
     <Content Include="js\controllers\LoginController.js" />
     <Content Include="js\controllers\LogoutController.js" />
     <Content Include="js\controllers\MainController.js" />
     <Content Include="js\controllers\ShooterController.js" />
     <Content Include="js\controllers\ShooterListController.js" />
+    <Content Include="js\services\CompetitionService.js" />
+    <Content Include="js\services\GuidService.js" />
     <Content Include="js\services\LocalDBService.js" />
     <Content Include="js\services\ShooterService.js" />
     <Content Include="js\services\UserService.js" />
@@ -117,10 +124,15 @@
     <Compile Include="Bootstrapper\CustomBootstrapper.cs" />
     <Compile Include="Helpers\AuthHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="JsonObjects\Arrow.cs" />
     <Compile Include="JsonObjects\BaseObject.cs" />
     <Compile Include="JsonObjects\BaseResult.cs" />
+    <Compile Include="JsonObjects\Competition.cs" />
+    <Compile Include="JsonObjects\CompetitionShooter.cs" />
+    <Compile Include="JsonObjects\End.cs" />
     <Compile Include="JsonObjects\LoginRequest.cs" />
     <Compile Include="JsonObjects\LoginResult.cs" />
+    <Compile Include="JsonObjects\Round.cs" />
     <Compile Include="JsonObjects\Shooter.cs" />
     <Compile Include="JsonObjects\User.cs" />
     <Compile Include="Modules\AppModule.cs" />

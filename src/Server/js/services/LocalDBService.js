@@ -5,15 +5,15 @@
             service.db = {};
 
             service.openDB = function (name) {
-                service.db = new loki(name, { autosave: true, autosaveInterval: 1000 });
+                service.db = new loki(name, { autosave: true, autosaveInterval: 1000, autoload:true });
             };
 
             service.getCollection = function (name) {
                 if (service.db != null) {
-                    var collection = db.getCollection(name);
+                    var collection = service.db.getCollection(name);
 
                     if (collection == null) {
-                        collection = db.addCollection(name);
+                        collection = service.db.addCollection(name);
                     }
 
                     return collection;
@@ -71,6 +71,24 @@
                 }
 
                 return null;
+            };
+
+            service.findFirstItem = function (collectionName) {
+                var collection = service.getCollection(collectionName);
+                if (collection != null) {
+                    return collection.data[0];
+                }
+
+                return null;
+            };
+
+            service.getCount = function(collectionName) {
+                var collection = service.getCollection(collectionName);
+                if (collection != null) {
+                    return collection.idIndex.length;
+                }
+
+                return 0;
             };
 
             service.openDB('localdata.db');

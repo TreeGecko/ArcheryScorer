@@ -8,7 +8,5 @@ namespace TreeGecko.Library.Archery.Objects
         public Guid ShooterGuid { get; set; }
         public string Target { get; set; }
         public string Notes { get; set; }
-
-
     }
 }

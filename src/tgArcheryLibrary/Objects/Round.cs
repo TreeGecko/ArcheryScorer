@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using TreeGecko.Library.Common.Objects;
 
 namespace TreeGecko.Library.Archery.Objects
@@ -9,15 +6,18 @@ namespace TreeGecko.Library.Archery.Objects
     public class Round : AbstractTGObject
     {
         public int Sequence { get; set; }
-        public Guid Shooter { get; set; }
-
+        public int RoundScore { get; set; }
+        public string Notes { get; set; }
+        public List<End> Ends { get; set; }
+ 
         public override TGSerializedObject GetTGSerializedObject()
         {
             TGSerializedObject tgs = base.GetTGSerializedObject();
 
             tgs.Add("Sequence", Sequence);
-            tgs.Add("Shooter", Shooter);
-
+            tgs.Add("RoundScore", RoundScore);
+            tgs.Add("Notes", Notes);
+            
             return tgs;
         }
 
@@ -26,7 +26,8 @@ namespace TreeGecko.Library.Archery.Objects
             base.LoadFromTGSerializedObject(_tgs);
 
             Sequence = _tgs.GetInt32("Sequence");
-            Shooter = _tgs.GetGuid("Shooter");
+            RoundScore = _tgs.GetInt32("RoundScore");
+            Notes = _tgs.GetString("Notes");
         }
     }
 }

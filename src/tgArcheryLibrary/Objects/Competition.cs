@@ -7,7 +7,7 @@ namespace TreeGecko.Library.Archery.Objects
     {
         public string Name { get; set; }
         public string Organization { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime Date { get; set; }
         public int Rounds { get; set; }
         public int Ends { get; set; }
         public int ArrowsPerEnd { get; set; }
@@ -20,7 +20,7 @@ namespace TreeGecko.Library.Archery.Objects
 
             tgs.Add("Name", Name);
             tgs.Add("Organization", Organization);
-            tgs.Add("DateTime", DateTime);
+            tgs.Add("DateTime", Date);
             tgs.Add("Rounds", Rounds);
             tgs.Add("Ends", Ends);
             tgs.Add("ArrowsPerEnd", ArrowsPerEnd);
@@ -36,7 +36,7 @@ namespace TreeGecko.Library.Archery.Objects
 
             Name = _tgs.GetString("Name");
             Organization = _tgs.GetString("Organization");
-            DateTime = _tgs.GetDateTime("DateTime");
+            Date = _tgs.GetDateTime("DateTime");
             Rounds = _tgs.GetInt32("Rounds");
             Ends = _tgs.GetInt32("Ends");
             ArrowsPerEnd = _tgs.GetInt32("ArrowsPerEnd");
