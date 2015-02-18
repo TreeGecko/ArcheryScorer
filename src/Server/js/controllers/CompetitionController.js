@@ -4,8 +4,8 @@
         function ($routeParams, $location, competitionService, shooterService, guidService) {
             var self = this;
 
-            self.Guid = $routeParams.guid;
             self.competition = {};
+            self.competition.Guid = $routeParams.guid;
             self.organizations = {};
             self.addedShooter = {};
 
@@ -25,10 +25,39 @@
                     });
             };
 
-            self.saveCompetition = function () {
-                self.competition.Guid = self.Guid;
+            self.buildCompetitionStructure = function (competition) {
+                var shooters = competition.CompetitionShooters;
+                var rounds = competition.Rounds;
+                var ends = competition.Ends;
+                var arrows = competition.Arrows;
 
-                competitionService.saveShooter(self.competition)
+                for (var h = 0; h < shooters.length(); h++) {
+                    var shooter = shooters[h];
+
+                    //Skip shooters that already have rounds assigned.
+                    if (shooter.Rounds.length == 0) {
+                        for (var i = 1; i <= rounds; i++) {
+                            var round = { Sequence: i, Ends: [] };
+                            shooter.Rounds.push(round);
+
+                            for (var j = 1; j < ends; j++) {
+                                var end = { Sequence: j, Arrows: [] };
+                                round.Ends.push(end);
+
+                                for (var k = 1; k < arrows; k++) {
+                                    var arrow = { Sequence: k };
+                                    end.Arrows.push(arrow);
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            self.saveCompetition = function () {
+                self.buildCompetitionStructure(self.competition);
+
+                competitionService.saveCompetition(self.competition)
                     .then(function (result) {
                         if (result.Result == "Success") {
                             $location.path("/competitions");
@@ -89,12 +118,11 @@
                 }
             };
 
-
             self.getShooters();
             self.getOrganizations();
 
-            if (self.Guid != null) {
-                self.getCompetition(self.Guid);
+            if (self.competition.Guid != null) {
+                self.getCompetition(self.competition.Guid);
             } else {
                 var cGuid = guidService.getGuid(false);
 
