@@ -1,6 +1,6 @@
 ﻿angular.module('asMobile')
     .factory('CompetitionService', [
-        '$http', 'UserService', function ($http, userService) {
+        '$http', 'UserService', 'LocalDBService', function ($http, userService, localDBService) {
             var service = {
                 getCompetitions : function() {
                     var req = {
@@ -32,7 +32,9 @@
                             return result.data;
                         });
                 },
-                saveCompetition : function(competition) {
+                saveCompetition: function (competition) {
+                    localDBService.persistItem("Competitions", competition);
+
                     var req = {
                         method: 'POST',
                         url: '/rest/competition',

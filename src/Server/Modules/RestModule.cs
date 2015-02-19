@@ -51,6 +51,77 @@ namespace TreeGecko.Archery.Server.Modules
                 response.ContentType = "application/json";
                 return response;
             };
+
+            Post["/rest/competition"] = _parameters =>
+            {
+                Response response = HandleCompetitionPost(_parameters);
+                response.ContentType = "application/json";
+                return response;
+            };
+        }
+
+        private string HandleCompetitionPost(DynamicDictionary _parameters)
+        {
+            BaseResult result = new BaseResult { Result = "Failure" };
+            TGUser user;
+
+            User jUser = AuthHelper.ValidateToken(m_Manager, Request, out user);
+            if (jUser != null)
+            {
+                Account account = m_Manager.GetAccountByUser(user.Guid);
+
+                if (account != null)
+                {
+                    string json = ReadBody();
+                    if (!string.IsNullOrEmpty(json))
+                    {
+                        var jCompetition = JsonConvert.DeserializeObject<JsonObjects.Competition>(json);
+
+                        if (jCompetition != null)
+                        {
+                            Library.Archery.Objects.Shooter shooter = null;
+
+                            if (!string.IsNullOrEmpty(jShooter.Guid))
+                            {
+                                Guid shooterGuid;
+                                if (Guid.TryParse(jShooter.Guid, out shooterGuid))
+                                {
+                                    shooter = m_Manager.GetShooter(shooterGuid);
+
+                                    if (!account.Guid.Equals(shooter.ParentGuid))
+                                    {
+                                        //For some reason the shooter doesn't belong to the account.
+                                        shooter = null;
+                                    }
+                                }
+                            }
+
+                            if (shooter == null)
+                            {
+                                shooter = new Library.Archery.Objects.Shooter
+                                {
+                                    Active = true,
+                                    ParentGuid = account.Guid
+                                };
+                            }
+
+                            shooter.FirstName = jShooter.FirstName;
+                            shooter.LastName = jShooter.LastName;
+
+                            DateTime bDate;
+                            if (DateTime.TryParse(jShooter.BirthDate, out bDate))
+                            {
+                                shooter.BirthDate = bDate;
+                            }
+
+                            m_Manager.Persist(shooter);
+                            result.Result = "Success";
+                        }
+                    }
+                }
+            }
+
+            return JsonConvert.SerializeObject(result);
         }
 
         private string HandleGuidGet(DynamicDictionary _parameters)
