@@ -1,7 +1,7 @@
 ﻿angular.module('asMobile')
     .controller('CompetitionCtrl', [
-        '$routeParams', '$location', 'CompetitionService', 'ShooterService', 'GuidService',
-        function ($routeParams, $location, competitionService, shooterService, guidService) {
+        '$routeParams', '$location', 'CompetitionService', 'ShooterService', 'OrganizationService', 'GuidService',
+        function ($routeParams, $location, competitionService, shooterService, organizationService, guidService) {
             var self = this;
 
             self.competition = {};
@@ -31,7 +31,7 @@
                 var ends = competition.Ends;
                 var arrows = competition.Arrows;
 
-                for (var h = 0; h < shooters.length(); h++) {
+                for (var h = 0; h < shooters.length; h++) {
                     var shooter = shooters[h];
 
                     //Skip shooters that already have rounds assigned.
@@ -66,7 +66,10 @@
             };
 
             self.getOrganizations = function () {
-                self.organizations = [{ Name: 'Joad'}];
+                self.organizations = organizationService.getOrganizations()
+                    .then(function(result) {
+                        self.organizations = result;
+                    });
             };
 
             self.getShooters = function () {

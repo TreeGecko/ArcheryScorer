@@ -14,7 +14,7 @@
 
                     return $http(req)
                         .then(function (result) {
-                            return result.data;
+                            return result.data.CompetitionRows;
                         });
                     },
                 getCompetition : function(guid) {

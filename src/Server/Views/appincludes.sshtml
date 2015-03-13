@@ -5,6 +5,7 @@
 <script src="/js/services/UserService.js"></script>
 <script src="/js/services/LocalDBService.js"></script>
 <script src="/js/services/ShooterService.js"></script>
+<script src="/js/services/OrganizationService.js"></script>
 
 <script src="/js/controllers/CompetitionController.js"></script>
 <script src="/js/controllers/CompetitionListController.js"></script>

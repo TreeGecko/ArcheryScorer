@@ -116,6 +116,7 @@
     <Content Include="js\services\CompetitionService.js" />
     <Content Include="js\services\GuidService.js" />
     <Content Include="js\services\LocalDBService.js" />
+    <Content Include="js\services\OrganizationService.js" />
     <Content Include="js\services\ShooterService.js" />
     <Content Include="js\services\UserService.js" />
     <Content Include="Web.config" />
@@ -128,10 +129,13 @@
     <Compile Include="JsonObjects\BaseObject.cs" />
     <Compile Include="JsonObjects\BaseResult.cs" />
     <Compile Include="JsonObjects\Competition.cs" />
+    <Compile Include="JsonObjects\CompetitionRow.cs" />
     <Compile Include="JsonObjects\CompetitionShooter.cs" />
+    <Compile Include="JsonObjects\CompetitionsResult.cs" />
     <Compile Include="JsonObjects\End.cs" />
     <Compile Include="JsonObjects\LoginRequest.cs" />
     <Compile Include="JsonObjects\LoginResult.cs" />
+    <Compile Include="JsonObjects\Organization.cs" />
     <Compile Include="JsonObjects\Round.cs" />
     <Compile Include="JsonObjects\Shooter.cs" />
     <Compile Include="JsonObjects\User.cs" />
@@ -168,9 +172,13 @@
     <None Include="Views\appincludes.sshtml" />
     <None Include="Views\dev_dbbuildresult.sshtml" />
     <None Include="Views\index.sshtml" />
-    <None Include="Views\menu.sshtml" />
+    <None Include="Views\menu.sshtml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\register.sshtml" />
-    <None Include="Views\standardincludes.sshtml" />
+    <None Include="Views\standardincludes.sshtml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

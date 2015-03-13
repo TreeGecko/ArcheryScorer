@@ -17,7 +17,10 @@
                         </div>
                         <div class="form-group">
                             <label for="organization">Organization</label>
-                            <select id="organization" class="form-control" ng-model="format" ng-options="org.Name for org in compCtrl.organizations"><option></option></select>
+                            <select id="organization" 
+                                    class="form-control" 
+                                    ng-model="compCtrl.competition.Organization" 
+                                    ng-options="org.Guid as org.Name for org in compCtrl.organizations"><option></option></select>
                         </div>
                         <div class="form-group">
                             <label for="birthdate">Date</label>
@@ -48,7 +51,7 @@
                         <div class="form-group">
                             <label for="arrows">Arrows per End</label>
                             <input type="number"
-                                   ng-model="compCtrl.competition.Arrows"
+                                   ng-model="compCtrl.competition.ArrowsPerEnd"
                                    class="form-control"
                                    id="arrows"
                                    placeholder="Enter number of arrows per end"

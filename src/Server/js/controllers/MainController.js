@@ -6,6 +6,5 @@
             self.userService = userService;
 
             guidService.verifyGuidSupply();
-
         }
     ]);

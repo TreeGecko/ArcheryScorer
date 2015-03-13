@@ -6,7 +6,7 @@ namespace TreeGecko.Library.Archery.Objects
     public class Competition : AbstractTGObject
     {
         public string Name { get; set; }
-        public string Organization { get; set; }
+        public Guid? OrganizationGuid { get; set; }
         public DateTime Date { get; set; }
         public int Rounds { get; set; }
         public int Ends { get; set; }
@@ -19,7 +19,7 @@ namespace TreeGecko.Library.Archery.Objects
             TGSerializedObject tgs = base.GetTGSerializedObject();
 
             tgs.Add("Name", Name);
-            tgs.Add("Organization", Organization);
+            tgs.Add("OrganizationGuid", OrganizationGuid);
             tgs.Add("DateTime", Date);
             tgs.Add("Rounds", Rounds);
             tgs.Add("Ends", Ends);
@@ -35,7 +35,7 @@ namespace TreeGecko.Library.Archery.Objects
             base.LoadFromTGSerializedObject(_tgs);
 
             Name = _tgs.GetString("Name");
-            Organization = _tgs.GetString("Organization");
+            OrganizationGuid = _tgs.GetNullableGuid("OrganizationGuid");
             Date = _tgs.GetDateTime("DateTime");
             Rounds = _tgs.GetInt32("Rounds");
             Ends = _tgs.GetInt32("Ends");

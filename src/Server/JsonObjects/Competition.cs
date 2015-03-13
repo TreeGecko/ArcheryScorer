@@ -28,7 +28,8 @@ namespace TreeGecko.Archery.Server.JsonObjects
             : base(_competition.Guid)
         {
             Name = _competition.Name;
-            Organization = _competition.Organization;
+            Organization = _competition.OrganizationGuid.ToString();
+
             Date = _competition.Date.ToString("d");
             Rounds = _competition.Rounds;
             Ends = _competition.Ends;

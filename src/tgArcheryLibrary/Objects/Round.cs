@@ -8,8 +8,7 @@ namespace TreeGecko.Library.Archery.Objects
         public int Sequence { get; set; }
         public int RoundScore { get; set; }
         public string Notes { get; set; }
-        public List<End> Ends { get; set; }
- 
+        
         public override TGSerializedObject GetTGSerializedObject()
         {
             TGSerializedObject tgs = base.GetTGSerializedObject();

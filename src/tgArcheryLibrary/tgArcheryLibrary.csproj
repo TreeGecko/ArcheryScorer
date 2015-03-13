@@ -78,6 +78,7 @@
     <Compile Include="DAOs\EndDAO.cs" />
     <Compile Include="DAOs\OrganizationDAO.cs" />
     <Compile Include="DAOs\ShooterDAO.cs" />
+    <Compile Include="Managers\ArcheryScorerDataManager.cs" />
     <Compile Include="Managers\ArcheryScorerManager.cs" />
     <Compile Include="Managers\ArcheryScorerStructureManager.cs" />
     <Compile Include="Objects\Account.cs" />

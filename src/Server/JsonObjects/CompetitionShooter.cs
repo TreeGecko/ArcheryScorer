@@ -21,6 +21,13 @@ namespace TreeGecko.Archery.Server.JsonObjects
             : base(_competitionShooter.Guid)
         {
             ShooterGuid = _competitionShooter.ShooterGuid.ToString();
+
+            var shooter = _manager.GetShooter(_competitionShooter.ShooterGuid);
+            if (shooter != null)
+            {
+                ShooterFullName = shooter.FullName;
+            }
+            
             Target = _competitionShooter.Target;
             Notes = _competitionShooter.Notes;
             Rounds = new List<Round>();

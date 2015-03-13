@@ -9,7 +9,6 @@ namespace TreeGecko.Library.Archery.Objects
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
 
-
         public override TGSerializedObject GetTGSerializedObject()
         {
             TGSerializedObject tgs = base.GetTGSerializedObject();
@@ -34,7 +33,7 @@ namespace TreeGecko.Library.Archery.Objects
         {
             get
             {
-                string temp = string.Format("{0} {1}", FirstName, LastModifiedBy);
+                string temp = string.Format("{0} {1}", FirstName, LastName);
                 return temp.Trim();
             }
         }

@@ -19,6 +19,20 @@ namespace TreeGecko.Archery.Server.Helpers
             return guid;
         }
 
+
+        public static List<Organization> ConvertOrganizations(List<Library.Archery.Objects.Organization> _organizations)
+        {
+            List<Organization> jOrganizations = new List<Organization>();
+
+            foreach (Library.Archery.Objects.Organization organization in _organizations)
+            {
+                Organization jOrganization = new Organization(organization);
+                jOrganizations.Add(jOrganization);
+            }
+
+            return jOrganizations;
+        }
+
         public static List<Shooter> ConvertShooters(List<Library.Archery.Objects.Shooter> _shooters)
         {
             List<Shooter> jShooters = new List<Shooter>();
@@ -63,10 +77,24 @@ namespace TreeGecko.Archery.Server.Helpers
             competition.Ends = _jCompetition.Ends;
             competition.MaxPointsPerArrow = _jCompetition.MaxPointsPerArrow;
             competition.Name = _jCompetition.Name;
-            competition.Organization = _jCompetition.Organization;
+            
             competition.Rounds = _jCompetition.Rounds;
             competition.TrackX = _jCompetition.TrackX;
+
+            Guid organizationalGuid;
+            if (Guid.TryParse(_jCompetition.Organization, out organizationalGuid))
+            {
+                competition.OrganizationGuid = organizationalGuid;
+            }
+            else
+            {
+                competition.OrganizationGuid = null;
+            }
+
+            
             _manager.Persist(competition);
+
+
 
             //PersistCompetitionShoots
             foreach (CompetitionShooter jCompetitionShooter in _jCompetition.CompetitionShooters)
@@ -92,15 +120,14 @@ namespace TreeGecko.Archery.Server.Helpers
                     ParentGuid = _competitionGuid
                 };
             }
-
-            shooter.Notes = _jCompetitionShooter.Notes;
-
+            
             Guid shooterGuid;
             if (Guid.TryParse(_jCompetitionShooter.ShooterGuid, out shooterGuid))
             {
                 shooter.ShooterGuid = shooterGuid;
             }
 
+            shooter.Notes = _jCompetitionShooter.Notes;
             shooter.Target = _jCompetitionShooter.Target;
             _manager.Persist(shooter);
 
@@ -187,9 +214,7 @@ namespace TreeGecko.Archery.Server.Helpers
             }
             arrow.IsX = _jArrow.IsX;
             arrow.Score = _jArrow.Score;
-
             _manager.Persist(arrow);
-
         }
 
 

@@ -33,6 +33,21 @@ namespace TreeGecko.Archery.Server.Modules
                 return null;
             };
 
+            Get["/dev/BuildData"] = _parameters =>
+            {
+                bool devMode = Config.GetBooleanValue("DevMode", false);
+
+                if (devMode)
+                {
+                    ArcheryScorerDataManager asdm = new ArcheryScorerDataManager();
+                    asdm.BuildData();
+
+                    return View["dev_dbbuildresult.sshtml"];
+                }
+
+                return null;
+            };
+
             Get["/register"] = _parameters =>
             {
                 return View["register.sshtml"];
